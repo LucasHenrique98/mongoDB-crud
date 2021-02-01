@@ -1,10 +1,11 @@
+require('dotenv').config();
 import express from 'express';
 import { customerRouter } from './routes/customerRouter.js';
 import mongoose from 'mongoose';
 
 mongoose
   .connect(
-    'mongodb+srv://mongodbteste:lukkinha123@cluster0.wufl7.mongodb.net/sample_analytics?retryWrites=true&w=majority',
+    `mongodb+srv://${process.env.USERDB}:${process.env.DBKEY}@cluster0.wufl7.mongodb.net/sample_analytics?retryWrites=true&w=majority`,
     { useNewUrlParser: true, useUnifiedTopology: true }
   )
   .then(console.log('Conectado ao MongoDB Atlas'))
